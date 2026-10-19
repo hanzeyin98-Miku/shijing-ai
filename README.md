@@ -37,4 +37,3 @@ SQLite 自动创建 `works`（诗作及释义）、`imagery`（意象与人工�
 ## AI 接口占位与接入步骤
 
 意象提取、图像生成、图谱/问答/色彩的本地服务端接口已建立，当前没有绑定具体模型供应商。接口路径、请求/响应格式、密钥配置和接入位置见 [INTEGRATIONS.md](./INTEGRATIONS.md)。复制 .env.example 为 .env，填写服务商接口地址和密钥；若服务商协议不同，在 server/integrations.ts 转换鉴权、请求与响应格式。
-

@@ -1,0 +1,11 @@
+node_modules/
+.local-node/
+sources/
+AGENTS.md
+*.log
+dist/
+dist-server/
+.env
+*.tsbuildinfo
+data/*.sqlite*
+data/generated-images/

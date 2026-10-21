@@ -1,0 +1,11 @@
+.background-music{position:relative;display:flex;align-items:center;gap:7px;padding:3px 9px 3px 3px;border:1px solid var(--line,#e8ded4);border-radius:8px;background:#fffdf9;color:#67584e;flex-shrink:0}
+.background-music .music-toggle{display:flex;align-items:center;gap:6px;padding:6px 8px;border:0;background:transparent;color:#67584e;font-size:11px;min-height:32px}
+.background-music .music-toggle[aria-pressed=true]{color:#a94e43;background:#fbefeb}
+.background-music input{width:82px;height:28px;margin:0;accent-color:#ce6557;cursor:pointer}
+.music-volume{width:29px;font:10px/1.4 Arial,sans-serif;text-align:right;font-variant-numeric:tabular-nums}
+.music-message{position:absolute;right:0;top:calc(100% + 6px);z-index:10;white-space:nowrap;font-size:11px;background:#fffdf9;box-shadow:0 3px 12px #44363018;border-radius:6px}
+.music-message:not(:empty){padding:6px 9px}
+.background-music :focus-visible{outline:2px solid #a94e43;outline-offset:2px}
+@media(max-width:1100px){.app-shell .topbar{height:auto;min-height:82px;flex-wrap:wrap;gap:12px;padding-top:12px;padding-bottom:12px}.top-actions{flex-wrap:wrap;align-items:center;margin-left:auto}.background-music input{width:70px}}
+@media(max-width:700px){.app-shell .topbar{height:auto;min-height:65px}.top-actions{width:100%;justify-content:flex-end;gap:7px}.background-music{margin-right:auto}.background-music input{width:65px}}
+

@@ -12,7 +12,7 @@
 @media(prefers-reduced-motion:reduce){.entry-background,.entry-intro,.entry-book-instruction{animation:none!important}.entry-phase-transitioning{animation-duration:.01ms!important}.entry-phase-transitioning .entry-intro,.entry-phase-transitioning .entry-book-trigger,.entry-phase-transitioning .entry-colophon{animation-duration:.01ms!important}}
 
 /* Use the supplied bamboo-scroll artwork as the entire clickable control. */
-.entry-book-trigger{width:min(58vw,560px);height:auto;aspect-ratio:auto;top:60%;}
+.entry-book-trigger{width:min(29vw,280px);height:auto;aspect-ratio:auto;top:66%;}
 .entry-book-art{position:relative;inset:auto;display:block;width:100%;height:auto;perspective:none;filter:drop-shadow(0 15px 13px #38271f42);animation:entry-bamboo-float 6s ease-in-out infinite;transition:filter .45s ease,transform .45s ease;}
 .entry-bamboo-image{display:block;width:100%;height:auto;object-fit:contain;user-select:none;-webkit-user-drag:none;}
 .entry-book-trigger:hover .entry-book-art{filter:drop-shadow(0 18px 17px #8c612e6b) drop-shadow(0 0 12px #e6c27b55);transform:translateY(-5px);}
@@ -20,5 +20,15 @@
 .entry-book-trigger:focus-visible{outline:2px solid #aa824c;outline-offset:4px;border-radius:12px;}
 .entry-book-instruction{bottom:-8%;}
 @keyframes entry-bamboo-float{0%,100%{translate:0 0}50%{translate:0 -5px}}
-@media(max-width:700px){.entry-book-trigger{top:59%;width:78vw;height:auto;aspect-ratio:auto}.entry-book-instruction{bottom:-10%}}
+@media(max-width:700px){.entry-book-trigger{top:65%;width:39vw;height:auto;aspect-ratio:auto}.entry-book-instruction{bottom:-10%}}
 @media(prefers-reduced-motion:reduce){.entry-book-art{animation:none!important;transition:none!important}}
+
+/* Keep AI as a light, smaller accent beside the calligraphy. */
+.entry-brand{--entry-calligraphy-width:clamp(210px,30vw,360px);align-items:center;max-width:100%}
+.entry-intro{top:14%}
+.entry-brand img{width:calc(var(--entry-calligraphy-width) * 1.12);flex:none}
+.entry-brand span{display:flex;align-items:center;gap:.06em;margin:0 0 0 3px;color:#6c503a;font-family:'Georgia','Times New Roman',serif;font-size:calc(var(--entry-calligraphy-width) * .46);font-weight:400;line-height:1;letter-spacing:-.035em;text-shadow:0 1px 2px #f1e4c880;white-space:nowrap}
+.entry-brand span i{font-size:.28em;font-style:normal;line-height:1;letter-spacing:0}
+.entry-title{font-size:clamp(27px,3.4vw,39px)}
+.entry-subtitle{font-size:clamp(13px,1.6vw,17px)}
+@media(max-width:700px){.entry-intro{top:16%}.entry-brand{--entry-calligraphy-width:clamp(165px,52vw,260px)}.entry-brand img{width:calc(var(--entry-calligraphy-width) * 1.08)}.entry-brand span{margin-left:1px}.entry-title{font-size:28px}.entry-subtitle{font-size:13px}}

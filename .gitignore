@@ -9,3 +9,5 @@ dist-server/
 *.tsbuildinfo
 data/*.sqlite*
 data/generated-images/
+report_work/
+deliverables/

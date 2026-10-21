@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { askPoetryAssistant, extractImagery, generatePoemImage, loadPoemCache, savePoemCache, type AssistantMode, type AssistantResponse, type ChatTurn, type ImageryItem } from './api';
 import CoCreatePanel, { type PaintingVersion } from './CoCreatePanel';
 import PoetryEntry from './PoetryEntry';
+import BackgroundMusic, { useBackgroundMusic } from './BackgroundMusic';
 import { buildCreativePrompt, defaultCreativeConfig, moodOptions, type CreativeConfig } from '../shared/creative';
 
 type Poem = { id?: string | number; title: string; author: string; dynasty: string; content: string; explanation: string; translation?: string[]; images: string[]; genre?: string };
@@ -150,6 +151,7 @@ function matchImageryTerm(label: string, terms: string[]) {
 }
 
 export default function App() {
+  const music = useBackgroundMusic();
   const [hasEntered, setHasEntered] = useState(false);
   const [poem, setPoem] = useState<Poem>(samples[0]);
   const [query, setQuery] = useState('');
@@ -615,13 +617,13 @@ export default function App() {
   function chooseSample(item: Poem) { resetPoemInteractions(); setPoem(item); setCreativeConfig(defaultCreativeConfig(item.images)); setGeneratedImage(''); setSelected(item.images[0]); setChatMessages(loadChat(item.title)); setAssistantResult(null); setAssistantResultMode(''); setNotice(`已载入《${item.title}》本地示例。`); }
   function chooseSearchResult(item: Poem) { resetPoemInteractions(); setPoem(item); setCreativeConfig(defaultCreativeConfig(item.images)); setGeneratedImage(''); setSelected(item.images[0] || '诗词'); setChatMessages(loadChat(item.title)); setAssistantResult(null); setAssistantResultMode(''); setSearchResults([]); setNotice(`已载入《${item.title}》· ${item.dynasty} ${item.author}。释义可编辑补充。`); }
 
-  if (!hasEntered) return <PoetryEntry onEnter={() => setHasEntered(true)} />;
+  if (!hasEntered) return <PoetryEntry onStart={music.start} onEnter={() => setHasEntered(true)} />;
 
   return <div className="app-shell">
     <header className="topbar">
       <a className="brand" href="#top"><span className="brand-mark">诗</span><span>诗境<span className="brand-ai">·AI</span><small>POETRY IN A PAINTING</small></span></a>
       <div className="top-title"><span className="status-dot" />诗画交互工作台</div>
-      <div className="top-actions"><button onClick={saveWork}>保存作品</button><button className="export-button" onClick={exportArtworkCard}>导出作品卡 PNG ↗</button></div>
+      <div className="top-actions"><BackgroundMusic music={music}/><button onClick={saveWork}>保存作品</button><button className="export-button" onClick={exportArtworkCard}>导出作品卡 PNG ↗</button></div>
     </header>
 
     <main id="top" className="workspace">
